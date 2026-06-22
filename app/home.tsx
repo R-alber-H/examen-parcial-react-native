@@ -1,0 +1,87 @@
+import { View, Text, TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { CATEGORIES } from "../data/categorias";
+import { PRODUCTS } from "../data/productos";
+
+export default function Home() {
+  return (
+    <ScrollView className="flex-1 bg-white pt-12 px-4" showsVerticalScrollIndicator={false}>
+
+      <View className="flex-row justify-between items-center mb-4">
+        <View>
+          <Text className="text-slate-400 text-sm font-medium">¡Hola, Bienvenido!</Text>
+          <Text className="text-2xl font-bold text-slate-900">Cyber Store</Text>
+        </View>
+
+        <TouchableOpacity className="p-2 relative">
+          <Ionicons name="cart-outline" size={28} color="#0f172a" />
+          <View className="absolute top-0 right-0 bg-red-500 w-4 h-4 rounded-full items-center justify-center">
+            <Text className="text-[10px] text-white font-bold">2</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View className="flex-row items-center px-4 py-2 mb-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <Ionicons name="search-outline" size={20} color="#94a3b8" />
+        <TextInput
+          placeholder="Buscar componentes, mouses..."
+          placeholderTextColor="#94a3b8"
+          className="text-slate-800 flex-1 text-base ml-2"
+        />
+      </View>
+
+      <View className='mb-5'>
+        <Text className="text-lg font-semibold mb-3">Categorías</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="flex-row">
+          {CATEGORIES.map((category, index) => {
+            const isSelected = index === 0;
+            return (
+              <TouchableOpacity
+                key={index}
+                className={`mr-2 px-3 py-2 ${isSelected ? 'border-b-2 border-[#111111]' : 'border-b-2 border-transparent'
+                  }`}
+              >
+                <Text className={`font-semibold ${isSelected ? 'text-[#141415]' : 'text-slate-400'}`}>
+                  {category}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
+      </View>
+
+      <View className="mb-10">
+        <Text className="text-lg font-semibold mb-4">Productos Destacados</Text>
+
+        <View className="flex-row flex-wrap justify-between">
+          {PRODUCTS.map((product) => (
+            <View key={product.id} className="border border-slate-200 rounded-3xl w-[48%] p-3 mb-4 justify-between bg-white shadow-sm">
+
+              <Image
+                source={product.image}
+                className="w-full h-28 rounded-2xl mb-2"
+                resizeMode="contain"
+              />
+
+              <View className="flex-1 justify-between">
+                <Text className="text-slate-800 font-semibold text-sm" numberOfLines={2}>
+                  {product.name}
+                </Text>
+                <Text className="text-[#9a9ba1] font-bold text-base mt-1">
+                  {product.price}
+                </Text>
+              </View>
+
+              <TouchableOpacity className="bg-[#4C5AE0] py-2 rounded-xl mt-3 flex-row items-center justify-center active:opacity-90">
+                <MaterialCommunityIcons name="plus" size={16} color="#ffffff" />
+                <Text className="text-white font-bold text-xs ml-1">Agregar</Text>
+              </TouchableOpacity>
+
+            </View>
+          ))}
+        </View>
+      </View>
+
+    </ScrollView>
+  );
+}

@@ -15,7 +15,7 @@ export default function Login() {
       
       <Image
         source={require("../assets/logoCyber-r.png")}
-        className="w-[200px] h-[200px] mb-1" // Ajustado tamaño para que no ocupe toda la pantalla al no tener el contenedor anterior
+        className="w-[200px] h-[200px] mb-1"
         resizeMode="contain"
       />
 
@@ -27,7 +27,6 @@ export default function Login() {
         Ingresa tus datos para iniciar sesión
       </Text>
 
-      {/* --- PRIMER INPUT: CORREO --- */}
       <View className="relative w-11/12 mb-8">
         <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
           <Text className={`text-xs font-medium ${isEmailFocused ? 'text-blue-600' : 'text-gray-500'}`}>
@@ -47,7 +46,6 @@ export default function Login() {
         />
       </View>
 
-      {/* --- SEGUNDO INPUT: CONTRASEÑA --- */}
       <View className="relative w-11/12 mb-8">
         <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
           <Text className={`text-xs font-medium ${isPasswordFocused ? 'text-blue-600' : 'text-gray-500'}`}>
@@ -66,19 +64,18 @@ export default function Login() {
         />
       </View>
 
-      {/* --- BOTÓN DE INICIAR SESIÓN (Sin Links temporales) --- */}
-      <Pressable className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90">
-        <Text className="text-center text-white font-bold text-sm">
-          Iniciar Sesión
-        </Text>
-      </Pressable>
+      <Link href="/home" asChild>
+  <Pressable className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90">
+    <Text className="text-center text-white font-bold text-sm">
+      Iniciar Sesión
+    </Text>
+  </Pressable>
+</Link>
 
       <View className="flex-row justify-center items-center mt-6">
         <Text className="text-gray-500 text-sm">
           ¿No tienes cuenta?{" "}
         </Text>
-
-        {/* El Link ahora se ve azul, en negrita y reacciona al tocarlo */}
         <Link href="/registro" className="text-blue-500 font-bold text-sm active:opacity-70">
           Regístrate
         </Link>
