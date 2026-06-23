@@ -1,0 +1,1 @@
+export const CATEGORIES = ['Todo', 'Teclados', 'Mouses', 'Monitores', 'Audio'];
