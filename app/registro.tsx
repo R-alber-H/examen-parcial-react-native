@@ -35,7 +35,6 @@ function Registro() {
           Ingresa tus datos para registrarte
         </Text>
 
-        {/* Campo: Nombre Completo */}
         <View className="relative w-11/12 mb-6">
           <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
             <Text className={`text-xs font-medium ${nombreError ? 'text-red-500' : isNombreFocused ? 'text-blue-600' : 'text-gray-500'}`}>
@@ -59,7 +58,6 @@ function Registro() {
           {nombreError ? <Text className="text-red-500 text-xs mt-1 ml-2">{nombreError}</Text> : null}
         </View>
 
-        {/* Campo: Correo Electrónico */}
         <View className="relative w-11/12 mb-6">
           <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
             <Text className={`text-xs font-medium ${emailError ? 'text-red-500' : isEmailFocused ? 'text-blue-600' : 'text-gray-500'}`}>
@@ -84,7 +82,6 @@ function Registro() {
           {emailError ? <Text className="text-red-500 text-xs mt-1 ml-2">{emailError}</Text> : null}
         </View>
 
-        {/* Campo: Contraseña */}
         <View className="relative w-11/12 mb-6">
           <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
             <Text className={`text-xs font-medium ${passwordError ? 'text-red-500' : isPasswordFocused ? 'text-blue-600' : 'text-gray-500'}`}>
@@ -114,7 +111,6 @@ function Registro() {
           </Text>
         </Pressable>
 
-        {/* Redirección a Login sin el string conflictivo */}
         <View className="flex-row justify-center items-center mt-6">
           <Text className="text-gray-500 text-sm">¿Ya tienes una cuenta? </Text>
           <Link href="/login" className="text-blue-500 font-bold text-sm active:opacity-70">

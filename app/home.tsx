@@ -2,6 +2,7 @@ import { View, Text, TextInput, ScrollView, Image, TouchableOpacity } from 'reac
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { CATEGORIES } from "../data/categorias";
 import { PRODUCTS } from "../data/productos";
+import { CardProduct } from "../components/cardProduct"
 
 export default function Home() {
   return (
@@ -55,29 +56,10 @@ export default function Home() {
 
         <View className="flex-row flex-wrap justify-between">
           {PRODUCTS.map((product) => (
-            <View key={product.id} className="border border-slate-200 rounded-3xl w-[48%] p-3 mb-4 justify-between bg-white shadow-sm">
-
-              <Image
-                source={product.image}
-                className="w-full h-28 rounded-2xl mb-2"
-                resizeMode="contain"
-              />
-
-              <View className="flex-1 justify-between">
-                <Text className="text-slate-800 font-semibold text-sm" numberOfLines={2}>
-                  {product.name}
-                </Text>
-                <Text className="text-[#9a9ba1] font-bold text-base mt-1">
-                  {product.price}
-                </Text>
-              </View>
-
-              <TouchableOpacity className="bg-[#4C5AE0] py-2 rounded-xl mt-3 flex-row items-center justify-center active:opacity-90">
-                <MaterialCommunityIcons name="plus" size={16} color="#ffffff" />
-                <Text className="text-white font-bold text-xs ml-1">Agregar</Text>
-              </TouchableOpacity>
-
-            </View>
+            <CardProduct
+              key={product.id}
+              product={product}
+            />
           ))}
         </View>
       </View>
