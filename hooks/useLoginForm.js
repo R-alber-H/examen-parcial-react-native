@@ -13,9 +13,9 @@ export function useLoginForm() {
   const validarEmail = () => {
     setIsEmailFocused(false);
     if (!email) {
-      setEmailError('El correo es obligatorio.');
+      setEmailError('El correo es obligatorio');
     } else if (!email.includes('@')) {
-      setEmailError('Ingresa un correo electrónico válido.');
+      setEmailError('Ingresa un correo electrónico válido');
     } else {
       setEmailError('');
     }
@@ -24,9 +24,9 @@ export function useLoginForm() {
   const validarPassword = () => {
     setIsPasswordFocused(false);
     if (!password) {
-      setPasswordError('La contraseña es obligatoria.');
+      setPasswordError('La contraseña es obligatoria');
     } else if (password.length < 6) {
-      setPasswordError('La contraseña debe tener al menos 6 caracteres.');
+      setPasswordError('La contraseña debe tener al menos 6 caracteres');
     } else {
       setPasswordError('');
     }

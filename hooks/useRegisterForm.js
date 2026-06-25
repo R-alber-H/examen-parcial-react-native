@@ -17,7 +17,7 @@ export function useRegisterForm() {
   const validarNombre = () => {
     setIsNombreFocused(false);
     if (!nombre.trim()) {
-      setNombreError('El nombre completo es obligatorio.');
+      setNombreError('El nombre completo es obligatorio');
     } else {
       setNombreError('');
     }
@@ -26,9 +26,9 @@ export function useRegisterForm() {
   const validarEmail = () => {
     setIsEmailFocused(false);
     if (!email) {
-      setEmailError('El correo es obligatorio.');
+      setEmailError('El correo es obligatorio');
     } else if (!email.includes('@')) {
-      setEmailError('Ingresa un correo electrónico válido.');
+      setEmailError('Ingresa un correo electrónico válido');
     } else {
       setEmailError('');
     }
@@ -37,9 +37,9 @@ export function useRegisterForm() {
   const validarPassword = () => {
     setIsPasswordFocused(false);
     if (!password) {
-      setPasswordError('La contraseña es obligatoria.');
+      setPasswordError('La contraseña es obligatoria');
     } else if (password.length < 6) {
-      setPasswordError('La contraseña debe tener al menos 6 caracteres.');
+      setPasswordError('La contraseña debe tener al menos 6 caracteres');
     } else {
       setPasswordError('');
     }
