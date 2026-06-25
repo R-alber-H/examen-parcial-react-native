@@ -1,16 +1,21 @@
+
 import { Link } from 'expo-router';
-import { useState } from 'react';
 import { Text, TextInput, View, Pressable, Image } from 'react-native';
+import { useRegisterForm } from '../hooks/useRegisterForm';
 
 function Registro() {
-  const [nombre, setNombre] = useState('');
-  const [isNombreFocused, setIsNombreFocused] = useState(false);
-
-  const [email, setEmail] = useState('');
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
-
-  const [password, setPassword] = useState('');
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const {
+    nombre, setNombre,
+    email, setEmail,
+    password, setPassword,
+    isNombreFocused, setIsNombreFocused,
+    isEmailFocused, setIsEmailFocused,
+    isPasswordFocused, setIsPasswordFocused,
+    nombreError, setNombreError,
+    emailError, setEmailError,
+    passwordError, setPasswordError,
+    validarNombre, validarEmail, validarPassword,
+  } = useRegisterForm();
 
   return (
     <View className="flex-1 justify-center items-center bg-white px-4">
@@ -30,62 +35,74 @@ function Registro() {
           Ingresa tus datos para registrarte
         </Text>
 
-        <View className="relative w-11/12 mb-8">
+        <View className="relative w-11/12 mb-6">
           <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
-            <Text className={`text-xs font-medium ${isNombreFocused ? 'text-blue-600' : 'text-gray-500'}`}>
+            <Text className={`text-xs font-medium ${nombreError ? 'text-red-500' : isNombreFocused ? 'text-blue-600' : 'text-gray-500'}`}>
               Nombre completo
             </Text>
           </View>
           <TextInput
             className={`w-full border rounded-2xl p-3.5 text-base text-gray-800 ${
-              isNombreFocused ? 'border-blue-600' : 'border-gray-300'
+              nombreError ? 'border-red-500' : isNombreFocused ? 'border-blue-600' : 'border-gray-300'
             }`}
             value={nombre}
-            onChangeText={setNombre}
+            onChangeText={(text) => {
+              setNombre(text);
+              if (nombreError) setNombreError('');
+            }}
             onFocus={() => setIsNombreFocused(true)}
-            onBlur={() => setIsNombreFocused(false)}
+            onBlur={validarNombre}
             placeholder="Ingresa tu nombre"
             autoCapitalize="words"
           />
+          {nombreError ? <Text className="text-red-500 text-xs mt-1 ml-2">{nombreError}</Text> : null}
         </View>
 
-        <View className="relative w-11/12 mb-8">
+        <View className="relative w-11/12 mb-6">
           <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
-            <Text className={`text-xs font-medium ${isEmailFocused ? 'text-blue-600' : 'text-gray-500'}`}>
+            <Text className={`text-xs font-medium ${emailError ? 'text-red-500' : isEmailFocused ? 'text-blue-600' : 'text-gray-500'}`}>
               Correo electrónico
             </Text>
           </View>
           <TextInput
             className={`w-full border rounded-2xl p-3.5 text-base text-gray-800 ${
-              isEmailFocused ? 'border-blue-600' : 'border-gray-300'
+              emailError ? 'border-red-500' : isEmailFocused ? 'border-blue-600' : 'border-gray-300'
             }`}
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(text) => {
+              setEmail(text);
+              if (emailError) setEmailError('');
+            }}
             onFocus={() => setIsEmailFocused(true)}
-            onBlur={() => setIsEmailFocused(false)}
+            onBlur={validarEmail}
             placeholder="ejemplo@correo.com"
             keyboardType="email-address"
             autoCapitalize="none"
           />
+          {emailError ? <Text className="text-red-500 text-xs mt-1 ml-2">{emailError}</Text> : null}
         </View>
 
-        <View className="relative w-11/12 mb-8">
+        <View className="relative w-11/12 mb-6">
           <View className="absolute -top-2.5 left-4 bg-white px-1 z-10">
-            <Text className={`text-xs font-medium ${isPasswordFocused ? 'text-blue-600' : 'text-gray-500'}`}>
+            <Text className={`text-xs font-medium ${passwordError ? 'text-red-500' : isPasswordFocused ? 'text-blue-600' : 'text-gray-500'}`}>
               Contraseña
             </Text>
           </View>
           <TextInput
             className={`w-full border rounded-2xl p-3.5 text-base text-gray-800 ${
-              isPasswordFocused ? 'border-blue-600' : 'border-gray-300'
+              passwordError ? 'border-red-500' : isPasswordFocused ? 'border-blue-600' : 'border-gray-300'
             }`}
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(text) => {
+              setPassword(text);
+              if (passwordError) setPasswordError('');
+            }}
             onFocus={() => setIsPasswordFocused(true)}
-            onBlur={() => setIsPasswordFocused(false)}
+            onBlur={validarPassword}
             placeholder="••••••••"
             secureTextEntry={true}
           />
+          {passwordError ? <Text className="text-red-500 text-xs mt-1 ml-2">{passwordError}</Text> : null}
         </View>
 
         <Pressable className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90">
@@ -95,11 +112,9 @@ function Registro() {
         </Pressable>
 
         <View className="flex-row justify-center items-center mt-6">
-          <Text className="text-gray-500 text-sm">
-            ¿Ya tienes una cuenta?{" "}
-          </Text>
+          <Text className="text-gray-500 text-sm">¿Ya tienes una cuenta? </Text>
           <Link href="/login" className="text-blue-500 font-bold text-sm active:opacity-70">
-            Inicia sesion
+            Inicia sesión
           </Link>
         </View>
 
