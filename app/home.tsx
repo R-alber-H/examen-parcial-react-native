@@ -1,10 +1,20 @@
 import { View, Text, TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { CATEGORIES } from "../data/categorias";
 import { PRODUCTS } from "../data/productos";
 import { CardProduct } from "../components/cardProduct"
+import { useAuth } from '../context/AuthContext';
+import { useRouter, Link } from 'expo-router';
 
 export default function Home() {
+  const router = useRouter();
+  const { logout } = useAuth();
+
+  const manejarlogout = () => {
+    logout();
+    router.replace('/login');
+  }
+
   return (
     <ScrollView className="flex-1 bg-white pt-12 px-4" showsVerticalScrollIndicator={false}>
 
@@ -14,12 +24,20 @@ export default function Home() {
           <Text className="text-2xl font-bold text-slate-900">Cyber Store</Text>
         </View>
 
-        <TouchableOpacity className="p-2 relative">
-          <Ionicons name="cart-outline" size={28} color="#0f172a" />
-          <View className="absolute top-0 right-0 bg-red-500 w-4 h-4 rounded-full items-center justify-center">
-            <Text className="text-[10px] text-white font-bold">2</Text>
-          </View>
-        </TouchableOpacity>
+        <View className="flex-row items-center gap-2">
+          <TouchableOpacity
+            onPress={manejarlogout}
+            className="p-2">
+            <Ionicons name="log-out" size={28} color="#ef4444" />
+          </TouchableOpacity>
+
+          <TouchableOpacity className="p-2 relative">
+            <Ionicons name="cart-outline" size={28} color="#0f172a" />
+            <View className="absolute top-0 right-0 bg-red-500 w-4 h-4 rounded-full items-center justify-center">
+              <Text className="text-[10px] text-white font-bold">2</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View className="flex-row items-center px-4 py-2 mb-5 rounded-2xl bg-white border border-slate-200 shadow-sm">

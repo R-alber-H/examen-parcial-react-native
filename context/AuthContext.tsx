@@ -10,7 +10,7 @@ interface AuthContextValue {
   logout: () => void;
 }
 
-export const AuthContext = createContext<any>(undefined);
+export const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
 
@@ -39,7 +39,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const nuevoUsuario: Usuario = {
       id: Date.now().toString(),
-      ...datos // Desestructuramos el nombre, email y password que vienen del formulario
+      ...datos 
     };
 
     dispatch({ type: 'REGISTRO', payload: nuevoUsuario });
