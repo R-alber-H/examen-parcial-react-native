@@ -1,13 +1,12 @@
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; 
-import { useRouter } from 'expo-router';
-import { Link } from 'expo-router';
+
+import { useAuth } from '../context/AuthContext';
+import { useRouter ,Link} from 'expo-router';
 import { Text, TextInput, View, Pressable, Image, Alert } from 'react-native';
 import { useLoginForm } from '../hooks/useLoginForm';
 
 export default function Login() {
   const router = useRouter(); 
-  const { login } = useContext(AuthContext); 
+  const { login } = useAuth();
   const {
     email, setEmail,
     password, setPassword,
@@ -22,7 +21,7 @@ export default function Login() {
   const manejarIngreso = () => {
     if (!validarFormularioCompleto()) return;
 
-    const exito = login(email, password);
+    const exito = login({ email, password });
 
     if (exito) {
       router.replace('/home'); 
@@ -94,8 +93,7 @@ export default function Login() {
 
         <Pressable
           onPress={manejarIngreso}
-          className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90"
-        >
+          className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90">
           <Text className="text-center text-white font-bold text-sm">
             Iniciar Sesión
           </Text>

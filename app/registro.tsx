@@ -1,9 +1,11 @@
-
-import { Link } from 'expo-router';
-import { Text, TextInput, View, Pressable, Image } from 'react-native';
+import { useAuth } from '../context/AuthContext';
+import { Link, useRouter } from 'expo-router';
+import { Text, TextInput, View, Pressable, Image, Alert } from 'react-native';
 import { useRegisterForm } from '../hooks/useRegisterForm';
 
 function Registro() {
+  const router = useRouter();
+  const { registro } = useAuth();
   const {
     nombre, setNombre,
     email, setEmail,
@@ -15,7 +17,20 @@ function Registro() {
     emailError, setEmailError,
     passwordError, setPasswordError,
     validarNombre, validarEmail, validarPassword,
+    validarFormularioCompleto,
   } = useRegisterForm();
+
+  const manejarRegistro = () => {
+    if (!validarFormularioCompleto()) return;
+
+    const resultado = registro({nombre, email, password})
+    if (resultado.conExito) {
+      router.replace('/home'); 
+    } else {
+      setEmailError(resultado.mensaje);
+      Alert.alert('Error de registro', resultado.mensaje);
+    }
+  }
 
   return (
     <View className="flex-1 justify-center items-center bg-white px-4">
@@ -105,7 +120,9 @@ function Registro() {
           {passwordError ? <Text className="text-red-500 text-xs mt-1 ml-2">{passwordError}</Text> : null}
         </View>
 
-        <Pressable className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90">
+        <Pressable
+         onPress={manejarRegistro} 
+         className="w-11/12 py-3 rounded-2xl bg-[#4C5AE0] active:opacity-90">
           <Text className="text-center text-white font-bold text-sm">
             Regístrate
           </Text>

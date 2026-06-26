@@ -1,10 +1,14 @@
+import { Usuario } from '../domain/entities/Usuario';
 
 export interface AuthState {
-  usuarioActual: { id: number; nombre: string; email: string } | null;
+  usuarios: Usuario[];
+  usuarioActual: Usuario | null;
 }
 
 export type AuthAction = 
-  { type: 'LOGIN'; payload: { id: number; nombre: string; email: string } };
+  { type: 'LOGIN'; payload: Usuario }
+  |{ type : 'REGISTRO'; payload: Usuario }
+  |{type :'LOGOUT' };
 
 export function authReducer(state: AuthState, action: AuthAction): AuthState {
   switch (action.type) {
@@ -12,6 +16,17 @@ export function authReducer(state: AuthState, action: AuthAction): AuthState {
       return {
         ...state,
         usuarioActual: action.payload, 
+      };
+    case 'REGISTRO': 
+      return {
+        ...state,
+        usuarios: [...state.usuarios, action.payload],
+        usuarioActual: action.payload 
+      };
+    case 'LOGOUT':
+      return {
+        ...state,
+        usuarioActual: null
       };
     default:
       return state;
