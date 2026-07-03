@@ -1,16 +1,17 @@
 import { useState } from 'react';
 
 export function useLoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
 
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
 
-  const validarEmail = () => {
+  const validarEmail = (): boolean => {
     setIsEmailFocused(false);
     if (!email) {
       setEmailError('El correo es obligatorio');
@@ -24,7 +25,7 @@ export function useLoginForm() {
     }
   };
 
-  const validarPassword = () => {
+  const validarPassword = (): boolean => {
     setIsPasswordFocused(false);
     if (!password) {
       setPasswordError('La contraseña es obligatoria');
@@ -37,8 +38,9 @@ export function useLoginForm() {
       return true;  
     }
   };
-  const validarFormularioCompleto = () => {
-    const emailEsValido = validarEmail();       
+
+  const validarFormularioCompleto = (): boolean => {
+    const emailEsValido = validarEmail();      
     const passwordEsValido = validarPassword();
 
     return emailEsValido && passwordEsValido;    
