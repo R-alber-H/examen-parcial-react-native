@@ -1,5 +1,7 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import { Producto } from '../domain/entities/Producto';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 interface ProductoItemProps {
   producto: Producto;
@@ -15,10 +17,10 @@ export function ProductoItem({ producto, onEditar, onEliminar }: ProductoItemPro
         <Text className="mt-1 text-slate-500">S/ {producto.price.toFixed(2)}</Text>
       </View>
       <TouchableOpacity className="mr-2 rounded-lg bg-amber-100 p-3" onPress={onEditar}>
-        <Text>Editar</Text>
+        <FontAwesome name="pencil-square-o" size={24} color="black" />
       </TouchableOpacity>
-      <TouchableOpacity className="rounded-lg bg-rose-100 p-3" onPress={onEliminar}>
-        <Text className="text-rose-700">Eliminar</Text>
+      <TouchableOpacity className="rounded-lg bg-rose-200 p-3" onPress={onEliminar}>
+        <AntDesign name="delete" size={20} color="black" />
       </TouchableOpacity>
     </View>
   );

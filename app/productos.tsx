@@ -14,11 +14,11 @@ export default function Productos() {
     <SafeAreaView className="flex-1 bg-slate-50">
       <View className="flex-1 px-5 pt-6">
         <Text className="text-xs font-extrabold tracking-widest text-indigo-600">
-          DEMOSTRACIÓN RÁPIDA
+          AREA PRODUCTOS
         </Text>
-        <Text className="mt-1 text-3xl font-black text-slate-900">Maqueta Context API</Text>
+        <Text className="mt-3 mb-2 text-center text-3xl font-black text-slate-900">Crud Basico De Productos</Text>
         <Text className="mb-5 mt-1 text-slate-500">
-          UI lista. Falta implementar Context API, useReducer y CRUD en memoria.
+          Crear, Editar y Eliminar Productos de la lista
         </Text>
 
         <ProductoForm
@@ -32,8 +32,6 @@ export default function Productos() {
         />
 
         <FlatList
-          // TODO 5 - Luego reemplazar productosIniciales por:
-          // const { productos } = useProductos();
           data={productos}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ paddingBottom: 24, paddingTop: 16 }}

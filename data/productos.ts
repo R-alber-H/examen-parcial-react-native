@@ -33,23 +33,23 @@ export const PRODUCTS: Product[] = [
   {
     id: '4',
     name: 'mouse antryx m660 black rgb',
-    price: 120.00,
+    price: 100.50,
     categoria: "Mouses",
     image: require('../assets/p-4.jpg'), 
   },
   {
     id: '5',
-    name: 'teclado',
-    price: 120.00,
+    name: 'Teclado Redragon K668WBO',
+    price: 120.50,
     categoria: "Teclados",
-    image: require('../assets/p-4.jpg'), 
+    image: require('../assets/teclado_d.jpg'), 
   },
   {
     id: '6',
-    name: 'Memorias',
-    price: 120.00,
+    name: 'Memoria Ram Kf 16Gb 7.20Ghz ',
+    price: 990.99,
     categoria: "Memorias",
-    image: require('../assets/p-4.jpg'), 
+    image: require('../assets/memoria_2.webp'), 
   },
   
 ];
