@@ -1,3 +1,5 @@
-// export const CATEGORIES = ['Todo', 'Teclados', 'Mouses', 'Monitores', 'Audio'];
+// 1. Definimos las categorías como una tupla de solo lectura
+export const CATEGORIES = ['Todo', 'Teclados', 'Mouses', 'Memorias', 'Tarjetas'] as const;
 
-export const CATEGORIES: string[] = ['Todo', 'Teclados', 'Mouses', 'Monitores', 'Audio'];
+// 2. Exportamos el tipo automático para que tu 'useState' en Home lo use
+export type Category = typeof CATEGORIES[number];
