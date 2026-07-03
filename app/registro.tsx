@@ -1,11 +1,14 @@
 import { useAuth } from '../context/AuthContext';
 import { Link, useRouter } from 'expo-router';
-import { Text, TextInput, View, Pressable, Image, Alert } from 'react-native';
+import { Text, TextInput, View, Pressable, Image, Alert, TouchableOpacity } from 'react-native';
 import { useRegisterForm } from '../hooks/useRegisterForm';
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
 
 function Registro() {
   const router = useRouter();
   const { registro } = useAuth();
+  const [secureMode, setSecureMode] = useState(true);
   const {
     nombre, setNombre,
     email, setEmail,
@@ -103,20 +106,34 @@ function Registro() {
               Contraseña
             </Text>
           </View>
-          <TextInput
-            className={`w-full border rounded-2xl p-3.5 text-base text-gray-800 ${
-              passwordError ? 'border-red-500' : isPasswordFocused ? 'border-blue-600' : 'border-gray-300'
-            }`}
-            value={password}
-            onChangeText={(text) => {
-              setPassword(text);
-              if (passwordError) setPasswordError('');
-            }}
-            onFocus={() => setIsPasswordFocused(true)}
-            onBlur={validarPassword}
-            placeholder="••••••••"
-            secureTextEntry={true}
-          />
+          
+          <View className="relative justify-center w-full">
+            <TextInput
+   
+              className={`w-full border rounded-2xl p-3.5 pr-12 text-base text-gray-800 ${passwordError ? 'border-red-500' : isPasswordFocused ? 'border-blue-600' : 'border-gray-300'}`}
+              value={password}
+              onChangeText={(text) => {
+                setPassword(text);
+                if (passwordError) setPasswordError('');
+              }}
+              onFocus={() => setIsPasswordFocused(true)}
+              onBlur={validarPassword}
+              placeholder="••••••••"
+              secureTextEntry={secureMode} 
+            />
+            
+            <TouchableOpacity 
+              className="absolute right-4 p-1"
+              onPress={() => setSecureMode(!secureMode)}
+            >
+              <Ionicons 
+                name={secureMode ? "eye-off-outline" : "eye-outline"} 
+                size={22} 
+                color="#9ca3af" 
+              />
+            </TouchableOpacity>
+          </View>
+          
           {passwordError ? <Text className="text-red-500 text-xs mt-1 ml-2">{passwordError}</Text> : null}
         </View>
 

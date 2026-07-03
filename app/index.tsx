@@ -18,7 +18,7 @@ export default function Index() {
             ¡Bienvenido!
           </Text>
           <Text className=" text-base text-center px-4 mb-6">
-            Explora nuestra tienda y encuentra los mejores productos con un solo
+            Explora nuestra tienda y encuentra los mejores productos en un solo
             lugar
           </Text>
         </View>
