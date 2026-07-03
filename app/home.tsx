@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { CATEGORIES, Category } from "../data/categorias"; 
-import { PRODUCTS } from "../data/productos";
 import { CardProduct } from "../components/cardProduct";
 import { useAuth } from '../context/AuthContext';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
+import { useProductos } from '../context/ProductosContext';
 
 export default function Home() {
   const router = useRouter();
   const { logout } = useAuth();
+
+  const {productos}=useProductos();
 
   const [selectedCategory, setSelectedCategory] = useState<Category>('Todo');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -19,7 +21,7 @@ export default function Home() {
     router.replace('/login');
   };
 
-  const productosFiltrados = PRODUCTS.filter((product) => {
+  const productosFiltrados = productos.filter((product) => {
     const cumpleCategoria = selectedCategory === 'Todo' || (product as any).categoria === selectedCategory;
     const cumpleBusqueda = product.name.toLowerCase().includes(searchQuery.toLowerCase());
     return cumpleCategoria && cumpleBusqueda;
@@ -35,6 +37,9 @@ export default function Home() {
         </View>
 
         <View className="flex-row items-center gap-2">
+          <Link href="/productos" className="text-blue-500 font-bold text-sm active:opacity-70">
+                      crud
+                    </Link>
           <TouchableOpacity onPress={manejarlogout} className="p-2">
             <Ionicons name="log-out" size={28} color="#ef4444" />
           </TouchableOpacity>

@@ -6,7 +6,7 @@ import { PRODUCTS } from '@/data/productos';
 interface ProductosContextValue {
   productos: Producto[];
   crear: (datos: ProductoFormData) => void;
-  actualizar: (id: string, datos: ProductoFormData) => void;
+  actualizar: (id: string, datos: ProductoUpdateData) => void;
   eliminar: (id: string) => void;
 }
 
@@ -17,6 +17,7 @@ export function ProductosProvider({ children }: PropsWithChildren) {
   const [productos, dispatch] = useReducer(productosReducer, PRODUCTS);
 
   const crear = (datos: ProductoFormData) => {
+    
     dispatch({ type: 'CREAR', payload: { id: Date.now.toString(), ...datos } })
   }
 
