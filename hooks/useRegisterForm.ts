@@ -1,20 +1,20 @@
-
 import { useState } from 'react';
 
 export function useRegisterForm() {
-  const [nombre, setNombre] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  
+  const [nombre, setNombre] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const [isNombreFocused, setIsNombreFocused] = useState(false);
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [isNombreFocused, setIsNombreFocused] = useState<boolean>(false);
+  const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
 
-  const [nombreError, setNombreError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [nombreError, setNombreError] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
 
-  const validarNombre = () => {
+  const validarNombre = (): boolean => {
     setIsNombreFocused(false);
     if (!nombre.trim()) {
       setNombreError('El nombre completo es obligatorio');
@@ -25,7 +25,7 @@ export function useRegisterForm() {
     }
   };
 
-  const validarEmail = () => {
+  const validarEmail = (): boolean => {
     setIsEmailFocused(false);
     if (!email) {
       setEmailError('El correo es obligatorio');
@@ -39,7 +39,7 @@ export function useRegisterForm() {
     }
   };
 
-  const validarPassword = () => {
+  const validarPassword = (): boolean => {
     setIsPasswordFocused(false);
     if (!password) {
       setPasswordError('La contraseña es obligatoria');
@@ -53,9 +53,9 @@ export function useRegisterForm() {
     }
   };
 
-  const validarFormularioCompleto = () => {
+  const validarFormularioCompleto = (): boolean => {
     const nombreValido = validarNombre();
-    const emailEsValido = validarEmail();       
+    const emailEsValido = validarEmail();      
     const passwordEsValido = validarPassword();
 
     return nombreValido && emailEsValido && passwordEsValido;    
@@ -75,4 +75,3 @@ export function useRegisterForm() {
     validarFormularioCompleto,
   };
 }
-
