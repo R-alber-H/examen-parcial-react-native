@@ -1,4 +1,13 @@
-export const PRODUCTS = [
+import { ImageSourcePropType } from 'react-native';
+
+export interface Product {
+  id: string;
+  name: string;
+  price: string; 
+  image: ImageSourcePropType; 
+}
+
+export const PRODUCTS: Product[] = [
   {
     id: '1',
     name: 'AMD procesador Ryzen 9',

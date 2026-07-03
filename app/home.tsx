@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <ScrollView className="flex-1 bg-white pt-12 px-4" showsVerticalScrollIndicator={false}>
+    <ScrollView className="flex-1 bg-white pt-10 px-4" showsVerticalScrollIndicator={false}>
 
       <View className="flex-row justify-between items-center mb-4">
         <View>
