@@ -1,50 +1,205 @@
-# Welcome to your Expo app 👋
+# Cyber SAC 📱💻
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación móvil desarrollada con **React Native**, **Expo** y **TypeScript** para la gestión básica de productos de una tienda de accesorios para computadoras.
 
-## Get started
+Este proyecto fue desarrollado como parte de un trabajo académico con el objetivo de aplicar los fundamentos del desarrollo móvil utilizando componentes reutilizables, hooks, manejo de estado y navegación entre pantallas.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 📖 Descripción
 
-2. Start the app
+Cyber SAC es una aplicación móvil que permite simular la gestión de productos de una tienda de accesorios para computadoras.
 
-   ```bash
-   npx expo start
-   ```
+La aplicación cuenta con autenticación simulada (inicio de sesión y registro de usuarios) y un módulo para administrar productos mediante operaciones CRUD (Crear, Leer, Actualizar y Eliminar).
 
-In the output, you'll find options to open the app in a
+Todos los datos se almacenan **únicamente en memoria**, por lo que la información se pierde al cerrar la aplicación.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🎯 Objetivos
 
-## Get a fresh project
+- Desarrollar una aplicación móvil utilizando React Native.
+- Implementar navegación entre pantallas.
+- Aplicar el uso de componentes reutilizables.
+- Utilizar Hooks de React para el manejo del estado.
+- Implementar un CRUD básico.
+- Aplicar una arquitectura organizada por carpetas.
+- Diseñar una interfaz sencilla utilizando NativeWind.
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
+# 📱 Funcionalidades
+
+- ✅ Inicio de sesión
+- ✅ Registro de usuarios
+- ✅ Pantalla principal (Home)
+- ✅ Listado de productos
+- ✅ Agregar productos
+- ✅ Editar productos
+- ✅ Eliminar productos
+- ✅ Gestión de productos en memoria
+- ✅ Navegación entre pantallas
+
+---
+
+# 🛠 Tecnologías utilizadas
+
+- React Native
+- Expo SDK 54
+- TypeScript
+- Expo Router
+- React Navigation
+- NativeWind
+- Context API
+- useReducer
+- useState
+- useEffect
+- React Native Flash Message
+
+---
+
+# 📂 Estructura del proyecto
+
+```
+.
+├── app/
+│   ├── _layout.tsx
+│   ├── home.tsx
+│   ├── index.tsx
+│   ├── login.tsx
+│   ├── productos.tsx
+│   └── registro.tsx
+│
+├── assets/
+│
+├── components/
+│
+├── context/
+│   ├── AuthContext.tsx
+│   └── ProductosContext.tsx
+│
+├── data/
+│
+├── hooks/
+│   ├── useLoginForm.ts
+│   ├── useProductForm.ts
+│   └── useRegisterForm.ts
+│
+├── reducers/
+│
+├── scripts/
+│
+├── utils/
+│   └── alertas.ts
+│
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+# ⚙️ Instalación
 
-To learn more about developing your project with Expo, look at the following resources:
+Clonar el repositorio
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+git clone https://github.com/R-alber-H/examen-parcial-react-native.git
+```
 
-## Join the community
+Ingresar al proyecto
 
-Join our community of developers creating universal apps.
+```bash
+cd examen-parcial
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Instalar dependencias
+
+```bash
+npm install
+```
+
+---
+
+# ▶️ Ejecutar la aplicación
+
+Iniciar el servidor de desarrollo
+
+```bash
+npx expo start
+```
+
+También es posible ejecutar la aplicación directamente en:
+
+Android
+
+```bash
+npm run android
+```
+
+iOS
+
+```bash
+npm run ios
+```
+
+Web
+
+```bash
+npm run web
+```
+
+---
+
+# 🧠 Manejo del estado
+
+La aplicación utiliza **Context API** junto con **useReducer** para compartir y administrar el estado global.
+
+Actualmente los datos:
+
+- Usuarios
+- Productos
+
+se almacenan únicamente en memoria, por lo que no existe persistencia de información ni conexión con una base de datos.
+
+---
+
+# 🎨 Diseño
+
+La interfaz fue desarrollada utilizando **NativeWind**, aprovechando clases de estilo similares a Tailwind CSS para React Native.
+
+---
+
+# 📚 Aprendizajes
+
+Durante el desarrollo de este proyecto se aplicaron conceptos como:
+
+- React Native
+- Expo
+- Navegación con Expo Router
+- React Navigation
+- Componentes reutilizables
+- Hooks personalizados
+- Context API
+- useReducer
+- Manejo de formularios
+- Organización del proyecto por módulos
+- Diseño de interfaces con NativeWind
+
+---
+
+# 🚧 Limitaciones
+
+Actualmente la aplicación presenta las siguientes limitaciones:
+
+- Los datos no se almacenan en una base de datos.
+- No existe autenticación real.
+- No hay persistencia de información.
+- El CRUD funciona únicamente mientras la aplicación permanece abierta.
+
+---
+## 👨‍💻 Autor
+
+Desarrollado por **Ricardo Angel Alberco Huamancusi**.
+
+Este proyecto forma parte de mi proceso de aprendizaje en React Native, Expo y TypeScript.
