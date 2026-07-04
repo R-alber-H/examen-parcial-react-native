@@ -21,7 +21,8 @@ export function useProductoForm() {
   const guardar = () => {
     const precioNumero = Number(price);
     if (!name.trim() || !price.trim() || Number.isNaN(precioNumero)) {
-      Alert.alert('Datos incompletos', 'Ingresa un nombre y un precio válido.');
+      // Alert.alert('Datos incompletos', 'Ingresa un nombre y un precio válido.');
+      mostrarError('Datos incompletos', 'Ingresa un nombre y un precio válido.');
       return;
     }
 
