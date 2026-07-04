@@ -17,9 +17,8 @@ export function ProductosProvider({ children }: PropsWithChildren) {
   const [productos, dispatch] = useReducer(productosReducer, PRODUCTS);
 
   const crear = (datos: ProductoFormData) => {
-    
-    dispatch({ type: 'CREAR', payload: { id: Date.now.toString(), ...datos } })
-  }
+  dispatch({ type: 'CREAR', payload: { id: Date.now().toString(), ...datos } });
+};
 
   const actualizar = (id: string, datos: ProductoUpdateData) => {
 

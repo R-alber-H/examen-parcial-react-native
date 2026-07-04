@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Alert } from 'react-native';
 import { Producto } from '../domain/entities/Producto';
 import { useProductos } from '../context/ProductosContext';
-
+import { mostrarError, mostrarExito } from "@/utils/alertas";
 
 export function useProductoForm() {
 
- const {crear, actualizar} = useProductos();
+  const { crear, actualizar } = useProductos();
 
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -26,10 +26,17 @@ export function useProductoForm() {
     }
 
     const datos_actualizar = { name: name.trim(), price: precioNumero };
-    const datos_crear = {name: name.trim(), price: precioNumero,image: require('../assets/producto_nuevo.jpg'), categoria: "Teclados"}
+    const datos_crear = { name: name.trim(), price: precioNumero, image: require('../assets/producto_nuevo.jpg'), categoria: "Teclados" }
 
-    if(editandoId) actualizar(editandoId,datos_actualizar);
-    else crear(datos_crear)
+    if (editandoId) {
+      actualizar(editandoId, datos_actualizar);
+      mostrarExito("Producto editado", "Catalogo Actualizado")
+    }
+
+    else {
+      crear(datos_crear)
+      mostrarExito("Producto creado", "Producto agregado al catalogo")
+    }
 
     limpiar();
   };
@@ -39,6 +46,7 @@ export function useProductoForm() {
     setPrice(producto.price.toString());
     setEditandoId(producto.id);
   };
+
 
   return { name, setName, price, setPrice, editandoId, guardar, limpiar, comenzarEdicion };
 }
