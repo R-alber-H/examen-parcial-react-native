@@ -5,6 +5,7 @@ import { Text, TextInput, View, Pressable, Image, Alert, TouchableOpacity } from
 import { useLoginForm } from '../hooks/useLoginForm';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { mostrarError } from "@/utils/alertas";
 
 export default function Login() {
   const router = useRouter(); 
@@ -29,7 +30,7 @@ export default function Login() {
     if (exito) {
       router.replace('/home'); 
     } else {
-      Alert.alert('Error de acceso', 'El correo o la contraseña son incorrectos.');
+      mostrarError('Error de acceso', 'El correo o la contraseña son incorrectos.');
     }
   };
 

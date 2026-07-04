@@ -16,7 +16,7 @@ export function CardProduct({ product }) {
           {product.name}
         </Text>
         <Text className="text-[#9a9ba1] font-bold text-base mt-1">
-          {product.price}
+          {`$ ${product.price}`}
         </Text>
       </View>
 
