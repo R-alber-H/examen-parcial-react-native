@@ -4,6 +4,7 @@ import { Text, TextInput, View, Pressable, Image, Alert, TouchableOpacity } from
 import { useRegisterForm } from '../hooks/useRegisterForm';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { mostrarError,mostrarExito } from "@/utils/alertas";
 
 function Registro() {
   const router = useRouter();
@@ -28,10 +29,11 @@ function Registro() {
 
     const resultado = registro({nombre, email, password})
     if (resultado.conExito) {
-      router.replace('/home'); 
+      router.replace('/home');
+      mostrarExito("Registro Exitoso","Bienvenido a nuestra tienda") 
     } else {
       setEmailError(resultado.mensaje);
-      Alert.alert('Error de registro', resultado.mensaje);
+      mostrarError('Error de registro',  resultado.mensaje);
     }
   }
 

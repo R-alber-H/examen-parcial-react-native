@@ -3,6 +3,7 @@ import { ProductosProvider } from "@/context/ProductosContext";
 import { Stack } from "expo-router";
 import "react-native-reanimated";
 import "../global.css";
+import FlashMessage from "react-native-flash-message";
 
 export default function RootLayout() {
   return (
@@ -15,6 +16,7 @@ export default function RootLayout() {
           <Stack.Screen name="home" />
           <Stack.Screen name="productos" />
         </Stack>
+        <FlashMessage position="top" />
       </ProductosProvider>
     </AuthProvider>
   );

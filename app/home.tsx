@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { CATEGORIES, Category } from "../data/categorias"; 
+import { CATEGORIES, Category } from "../data/categorias";
 import { CardProduct } from "../components/cardProduct";
 import { useAuth } from '../context/AuthContext';
 import { Link, useRouter } from 'expo-router';
 import { useProductos } from '../context/ProductosContext';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function Home() {
   const router = useRouter();
   const { logout } = useAuth();
 
-  const {productos}=useProductos();
+  const { productos } = useProductos();
 
   const [selectedCategory, setSelectedCategory] = useState<Category>('Todo');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -37,9 +38,11 @@ export default function Home() {
         </View>
 
         <View className="flex-row items-center gap-2">
-          <Link href="/productos" className="text-blue-500 font-bold text-sm active:opacity-70">
-                      crud
-                    </Link>
+          <Link href="/productos" asChild>
+            <Pressable className="active:opacity-70 p-2">
+              <AntDesign name="product" size={24} color="#3b82f6" />
+            </Pressable>
+          </Link>
           <TouchableOpacity onPress={manejarlogout} className="p-2">
             <Ionicons name="log-out" size={28} color="#ef4444" />
           </TouchableOpacity>
@@ -72,10 +75,9 @@ export default function Home() {
             return (
               <TouchableOpacity
                 key={category}
-                onPress={() => setSelectedCategory(category)} 
-                className={`mr-2 px-3 py-2 ${
-                  isSelected ? 'border-b-2 border-[#111111]' : 'border-b-2 border-transparent'
-                }`}
+                onPress={() => setSelectedCategory(category)}
+                className={`mr-2 px-3 py-2 ${isSelected ? 'border-b-2 border-[#111111]' : 'border-b-2 border-transparent'
+                  }`}
               >
                 <Text className={`font-semibold ${isSelected ? 'text-[#141415]' : 'text-slate-400'}`}>
                   {category}
