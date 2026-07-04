@@ -24,7 +24,7 @@ export function ProductosProvider({ children }: PropsWithChildren) {
 
     const new_producto: Producto = {
       id: id,
-      image: require('../assets/producto_nuevo.jpg'),
+      image: require('../assets/producto_nuevo.png'),
       categoria: "Teclados",
       ...datos
     }

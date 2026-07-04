@@ -26,7 +26,7 @@ export function useProductoForm() {
     }
 
     const datos_actualizar = { name: name.trim(), price: precioNumero };
-    const datos_crear = { name: name.trim(), price: precioNumero, image: require('../assets/producto_nuevo.jpg'), categoria: "Teclados" }
+    const datos_crear = { name: name.trim(), price: precioNumero, image: require('../assets/producto_nuevo.png'), categoria: "Teclados" }
 
     if (editandoId) {
       actualizar(editandoId, datos_actualizar);

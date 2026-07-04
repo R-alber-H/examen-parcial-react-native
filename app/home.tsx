@@ -25,11 +25,11 @@ const RenderHeader = ({
       <View className="flex-row items-center gap-2">
         <Link href="/productos" asChild>
           <Pressable className="active:opacity-70 p-2">
-            <AntDesign name="product" size={24} color="#3b82f6" />
+            <AntDesign name="product" size={24} color="#0f172a" />
           </Pressable>
         </Link>
         <TouchableOpacity onPress={manejarlogout} className="p-2">
-          <Ionicons name="log-out" size={28} color="#ef4444" />
+          <Ionicons name="log-out" size={28} color="#0f172a" />
         </TouchableOpacity>
 
         <TouchableOpacity className="p-2 relative">
@@ -104,6 +104,7 @@ export default function Home() {
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         columnWrapperClassName="justify-between"
+
         ListHeaderComponent={
           <RenderHeader 
             searchQuery={searchQuery}

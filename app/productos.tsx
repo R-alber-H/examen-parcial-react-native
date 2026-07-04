@@ -18,11 +18,11 @@ export default function Productos() {
         <View className="flex-row items-center gap-2 mb-2">
           <Link href="/home" asChild>
             <Pressable className="p-1 -ml-1 active:opacity-60">
-              <Ionicons name="arrow-back" size={24} color="#4f46e5" />
+              <Ionicons name="arrow-back" size={24} color="black" />
             </Pressable>
           </Link>
 
-          <Text className="text-lg font-extrabold tracking-widest text-indigo-600">
+          <Text className="text-lg font-extrabold tracking-widest text-black">
             REGRESAR
           </Text>
         </View>
