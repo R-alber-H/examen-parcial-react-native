@@ -4,18 +4,26 @@ import { ProductoItem } from '@/components/ProductoItem';
 import { useProductoForm } from '../hooks/useProductoFrom';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useProductos } from '../context/ProductosContext';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { MenuFlotante } from '../components/menuFlotante';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Productos() {
 
   const { productos, eliminar } = useProductos();
   const form = useProductoForm();
+  const { logout } = useAuth();
+
+  const manejarlogout = () => {
+    logout();
+    router.replace('/login');
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-slate-50">
-      <View className="flex-1 px-5 pt-6">
-        <View className="flex-row items-center gap-2 mb-2">
+      <View className="flex-1 px-5 pt-6 relative">
+        <View className="flex-row items-center gap-2 mb-2 ">
           <Link href="/home" asChild>
             <Pressable className="p-1 -ml-1 active:opacity-60">
               <Ionicons name="arrow-back" size={24} color="black" />
@@ -45,7 +53,7 @@ export default function Productos() {
         <FlatList
           data={productos}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={{ paddingBottom: 24, paddingTop: 16 }}
+          contentContainerStyle={{ paddingBottom: 90, paddingTop: 16 }}
           renderItem={({ item }) => (
             <ProductoItem
               producto={item}
@@ -61,6 +69,12 @@ export default function Productos() {
           ListEmptyComponent={<Text className="mt-8 text-center text-slate-500">No existen productos.</Text>}
         />
       </View>
+      <MenuFlotante
+          enInicio={false} 
+          alPresionarProductos={() => { }} 
+          alPresionarLogout={manejarlogout}
+          alPresionarInicio={() => router.push('/home')} 
+        />
     </SafeAreaView>
   );
 }

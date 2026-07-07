@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Alert } from 'react-native';
 import { Producto } from '../domain/entities/Producto';
 import { useProductos } from '../context/ProductosContext';
 import { mostrarError, mostrarExito } from "@/utils/alertas";
@@ -21,7 +20,6 @@ export function useProductoForm() {
   const guardar = () => {
     const precioNumero = Number(price);
     if (!name.trim() || !price.trim() || Number.isNaN(precioNumero)) {
-      // Alert.alert('Datos incompletos', 'Ingresa un nombre y un precio válido.');
       mostrarError('Datos incompletos', 'Ingresa un nombre y un precio válido.');
       return;
     }

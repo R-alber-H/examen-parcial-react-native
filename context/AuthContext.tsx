@@ -1,6 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
 import { authReducer } from '../reducers/authReducer';
-// import { usuarios } from '../data/usuarios';
 import { Usuario, RegistroFormData, LoginFormData } from '../domain/entities/Usuario';
 
 interface AuthContextValue {
